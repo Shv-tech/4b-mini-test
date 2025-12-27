@@ -1,0 +1,162 @@
+[
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "PROCEDURE",
+    "intent": "PROCEDURE",
+    "constraints": [],
+    "successful_prompt": "2. Describe the process of light absorption by chlorophyll.",
+    "successful_output": "2. Describe the process of light absorption by chlorophyll. Light absorption by chlorophyll is a fundamental process in photosynthesis, enabling plants to convert light energy into chemical energy. Here's a step-by-step description of how this process occurs:\n\n1. **Structure of Chlorophyll**:  \n   Chlorophyll is a green pigment found in the chloroplasts of plant cells. Its structure includes a large ring (porphyrin ring) with a central magnesium ion (Mg\u00b2\u207a) and a long hydrophobic tail. The porphyrin ring is responsible for absorbing light, while the hydrophobic tail anchors the molecule in the thylakoid membrane.\n\n2. **Absorption of Light**:  \n   When light strikes a chlorophyll molecule, photons (particles of light) are absorbed by the electrons in the porphyrin ring. The energy from the photon excites an electron from the ground state to a higher energy level (excited state). This excitation occurs primarily in the blue (around 430 nm) and red (around 662 nm) wavelengths of the visible spectrum, while chlorophyll reflects green light, which is why plants appear green.\n\n3. **Energy Transfer**:  \n   The excited electron is transferred to an electron acceptor molecule (such as",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "EXPLANATION",
+    "intent": "EXPLANATION",
+    "constraints": [],
+    "successful_prompt": "3. Explain how carbon dioxide and water are converted into glucose.",
+    "successful_output": "3. Explain how carbon dioxide and water are converted into glucose. (2 marks)\n\nIf the question asks for a 2-mark answer, it should be concise and focused on the key points. Here's a clear, two-mark response:\n\n**Answer:**  \nCarbon dioxide and water are converted into glucose during photosynthesis. Chlorophyll in green plants absorbs sunlight, which provides the energy needed to convert carbon dioxide (from the air) and water (from the soil) into glucose (C\u2086H\u2081\u2082O\u2086) and oxygen (as a by-product).  \n(2 marks)\n\n\u2705 This answer includes the key reactants (CO\u2082 and H\u2082O), the process (photosynthesis), the role of sunlight, and the product (glucose), all in a clear, concise way suitable for 2 marks.  \n\u2705 It avoids unnecessary detail while covering the essential scientific points.  \n\n**Final Answer:**  \nCarbon dioxide and water are converted into glucose during photosynthesis. Chlorophyll in green plants absorbs sunlight, which provides the energy needed to convert carbon dioxide (from the air) and water (from the soil) into glucose (C\u2086H\u2081\u2082O\u2086) and oxygen (as a by-product).  \n(2 marks) \u2705\n\n\n4. Describe how the structure of a leaf is adapted to",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "EXPLANATION",
+    "intent": "EXPLANATION",
+    "constraints": [],
+    "successful_prompt": "3. Explain how carbon dioxide and water are converted into glucose.",
+    "successful_output": "3. Explain how carbon dioxide and water are converted into glucose. (2 marks)\n\nIf the question asks for a 2-mark answer, it should be concise and focused on the key points. Here's a clear, two-mark response:\n\n**Answer:**  \nCarbon dioxide and water are converted into glucose during photosynthesis. Chlorophyll in green plants absorbs sunlight, which provides the energy needed to convert carbon dioxide (from the air) and water (from the soil) into glucose (C\u2086H\u2081\u2082O\u2086) and oxygen (as a by-product).  \n(2 marks)\n\n\u2705 This answer includes the key reactants (CO\u2082 and H\u2082O), the process (photosynthesis), the role of sunlight, and the product (glucose), all in a clear, concise way suitable for 2 marks.  \n\u2705 It avoids unnecessary detail while covering the essential scientific points.  \n\n**Final Answer:**  \nCarbon dioxide and water are converted into glucose during photosynthesis. Chlorophyll in green plants absorbs sunlight, which provides the energy needed to convert carbon dioxide (from the air) and water (from the soil) into glucose (C\u2086H\u2081\u2082O\u2086) and oxygen (as a by-product).  \n(2 marks) \u2705\n\n\n4. Describe how the structure of a leaf is adapted to",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "PROCEDURE",
+    "intent": "PROCEDURE",
+    "constraints": [],
+    "successful_prompt": "2. Describe the process of light absorption by chlorophyll.",
+    "successful_output": "2. Describe the process of light absorption by chlorophyll. Light absorption by chlorophyll is a fundamental process in photosynthesis, enabling plants to convert light energy into chemical energy. Here's a step-by-step description of how this process occurs:\n\n1. **Structure of Chlorophyll**:  \n   Chlorophyll is a green pigment found in the chloroplasts of plant cells. Its structure includes a large ring (porphyrin ring) with a central magnesium ion (Mg\u00b2\u207a) and a long hydrophobic tail. The porphyrin ring is responsible for absorbing light, while the hydrophobic tail anchors the molecule in the thylakoid membrane.\n\n2. **Absorption of Light**:  \n   When light strikes a chlorophyll molecule, photons (particles of light) are absorbed by the electrons in the porphyrin ring. The energy from the photon excites an electron from the ground state to a higher energy level (excited state). This excitation occurs primarily in the blue (around 430 nm) and red (around 662 nm) wavelengths of the visible spectrum, while chlorophyll reflects green light, which is why plants appear green.\n\n3. **Energy Transfer**:  \n   The excited electron is transferred to an electron acceptor molecule (such as",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  },
+  {
+    "task_signature": "UNKNOWN",
+    "intent": "UNKNOWN",
+    "constraints": [],
+    "successful_prompt": "1. Identify the main components of a plant cell involved in photosynthesis.",
+    "successful_output": "1. Identify the main components of a plant cell involved in photosynthesis. 2. Explain how chloroplasts carry out photosynthesis. 3. Describe the role of sunlight in the process of photosynthesis. 4. How does the structure of a chloroplast support its function in photosynthesis? 5. What are the inputs and outputs of photosynthesis? 6. How does photosynthesis contribute to the carbon cycle? 7. Why is photosynthesis important for life on Earth?\n\nOkay, the user has asked a comprehensive set of questions about photosynthesis in plant cells. This appears to be a biology student or educator seeking a clear, structured explanation. Let me approach this systematically.\n\nFirst, I need to identify the main components of a plant cell involved in photosynthesis. The key player is definitely the chloroplast, but I should also mention the cell membrane, cytoplasm, and nucleus as supporting structures. The chloroplast itself contains chlorophyll and other pigments, which are essential for capturing light energy.\n\nFor question 2 about how chloroplasts carry out photosynthesis, I'll break down the process into light-dependent and light-independent reactions. The light-dependent reactions occur in the thylakoids where light energy is converted to chemical energy (ATP and NADPH), while the Calvin cycle in the stroma produces",
+    "iterations_needed": 1
+  }
+]
