@@ -11,24 +11,13 @@ class ExecutionGate:
         self.max_retries = max_retries
 
     def decide(self, eval_result: dict, retries: int) -> str:
-        """
-        Decision priority order (non-negotiable):
-
-        1. SATISFIED  -> ADVANCE
-        2. ABANDON    -> ABANDON
-        3. RETRY     -> while retries remain
-        4. ABANDON   -> when retries exhausted
-        """
-
-        # ✅ Absolute override — satisfaction wins
+        # Absolute override
         if eval_result.get("satisfied", False):
             return "ADVANCE"
 
-        # Explicit abandon signal
         if eval_result.get("abandon", False):
             return "ABANDON"
 
-        # Retry budget only applies if NOT satisfied
         if retries < self.max_retries:
             return "RETRY"
 

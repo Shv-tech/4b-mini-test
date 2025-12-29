@@ -1,82 +1,97 @@
-from dataclasses import dataclass, field
-from typing import Dict, Any, List
+# eunoia/core/constraint_graph.py
+
+from typing import List, Any, Optional
+import re
 
 
-# ----------------------------
-# Constraint Node
-# ----------------------------
-
-@dataclass
 class ConstraintNode:
-    name: str
-    value: Any
-    priority: int
-    satisfied: bool = False
+    """
+    Atomic symbolic constraint with executable semantics.
+    """
 
+    def __init__(
+        self,
+        name: str,
+        value: Any,
+        priority: int = 0,
+    ):
+        self.name = name
+        self.value = value
+        self.priority = priority
+        self.satisfied: bool = False
+
+        # Stable identity
+        self.signature: str = f"{self.name}:{self.value}"
+
+    # --------------------------------------------------
+    # ✅ REQUIRED BY ConstraintEvaluator
+    # --------------------------------------------------
     def check(self, output: str) -> bool:
-        from eunoia.core.constraint_graph import ConstraintChecks
+        """
+        Evaluate this constraint against model output.
+        """
+        result = False
 
         if self.name == "steps":
-            self.satisfied = ConstraintChecks.check_steps(self.value, output)
+            # Count numbered steps like "1." "2."
+            steps = re.findall(r"^\s*\d+\.", output, flags=re.MULTILINE)
+            result = len(steps) == int(self.value)
 
-        elif self.name == "format" and self.value == "no_bullets":
-            self.satisfied = ConstraintChecks.check_no_bullets(output)
-
-        elif self.name == "tone":
-            self.satisfied = ConstraintChecks.check_tone(self.value, output)
+        elif self.name == "format":
+            if self.value == "no_bullets":
+                result = not bool(
+                    re.search(r"^\s*[-*•]", output, flags=re.MULTILINE)
+                )
+            else:
+                # Unknown format → pass (future-safe)
+                result = True
 
         else:
-            self.satisfied = True  # unknown constraints default to pass
+            # Unknown constraint types are non-blocking by default
+            result = True
 
-        return self.satisfied
+        self.satisfied = result
+        return result
+
+    def __repr__(self) -> str:
+        status = "✓" if self.satisfied else "✗"
+        return f"<Constraint {self.signature} | {status}>"
 
 
-# ----------------------------
-# Constraint Graph
-# ----------------------------
-
-@dataclass
 class ConstraintGraph:
-    nodes: Dict[str, ConstraintNode] = field(default_factory=dict)
+    """
+    Backward-compatible constraint container.
+    """
 
+    def __init__(self):
+        self.nodes: List[ConstraintNode] = []
+
+    # ---------- Legacy + Modern API ----------
     def add_node(self, node: ConstraintNode):
-        self.nodes[node.name] = node
+        self.nodes.append(node)
 
-    def get_node(self, name: str) -> ConstraintNode:
-        return self.nodes.get(name)
+    def add(self, node: ConstraintNode):
+        self.nodes.append(node)
+
+    def get_node(self, name: str) -> Optional[ConstraintNode]:
+        for node in self.nodes:
+            if node.name == name:
+                return node
+        return None
 
     def all_constraints(self) -> List[ConstraintNode]:
-        return list(self.nodes.values())
+        return list(self.nodes)
 
-    def unsatisfied(self) -> List[ConstraintNode]:
-        return [n for n in self.nodes.values() if not n.satisfied]
-
-
-# ----------------------------
-# Constraint Checks
-# ----------------------------
-
-class ConstraintChecks:
-    @staticmethod
-    def check_steps(value: int, output: str) -> bool:
-        steps = sum(
-            1
-            for line in output.splitlines()
-            if line.strip().startswith(tuple(f"{i}." for i in range(1, value + 1)))
-        )
-        return steps == value
-
-    @staticmethod
-    def check_no_bullets(output: str) -> bool:
-        bullet_markers = ("-", "*", "•")
-        return not any(
-            line.strip().startswith(bullet_markers)
-            for line in output.splitlines()
+    # ---------- Helpers ----------
+    def violations(self) -> List[ConstraintNode]:
+        return sorted(
+            (n for n in self.nodes if not n.satisfied),
+            key=lambda n: n.priority,
+            reverse=True,
         )
 
-    @staticmethod
-    def check_tone(value: str, output: str) -> bool:
-        calm_words = {"please", "gently", "calm", "smooth", "soft"}
-        if value == "calm":
-            return any(w in output.lower() for w in calm_words)
-        return True
+    def all_satisfied(self) -> bool:
+        return all(n.satisfied for n in self.nodes)
+
+    def __repr__(self) -> str:
+        return f"<ConstraintGraph | {len(self.nodes)} constraints>"

@@ -1,10 +1,10 @@
 from collections import defaultdict
+from typing import List
 
 
 class MutationScoreStore:
     """
-    Tracks success/failure statistics for mutation strategies.
-    Shared globally.
+    Global shared memory of how well mutation strategies perform.
     """
 
     def __init__(self):
@@ -16,22 +16,19 @@ class MutationScoreStore:
     def record_failure(self, strategy: str):
         self.stats[strategy]["fail"] += 1
 
-    def score(self, strategy: str) -> float:
-        s = self.stats[strategy]
-        total = s["success"] + s["fail"]
-        if total == 0:
-            return 0.0
-        return s["success"] / total
+    def best_strategies(self, limit: int = 3) -> List[str]:
+        if not self.stats:
+            return []
 
-    def ranked(self, strategies: list[str]) -> list[str]:
-        """
-        Return strategies ranked by past success.
-        """
-        return sorted(
-            strategies,
-            key=lambda s: self.score(s),
-            reverse=True
-        )
+        scored = []
+        for strategy, data in self.stats.items():
+            success = data["success"]
+            fail = data["fail"]
+            score = (success + 1) / (success + fail + 2)
+            scored.append((score, strategy))
+
+        scored.sort(reverse=True)
+        return [s for _, s in scored[:limit]]
 
     def reset(self):
         self.stats.clear()

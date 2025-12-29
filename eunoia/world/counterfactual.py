@@ -1,5 +1,5 @@
 from typing import List
-
+import copy
 
 class CounterfactualSimulator:
     """
@@ -47,3 +47,9 @@ class CounterfactualSimulator:
             alternatives.append(f"Break down {goal} into smaller parts")
 
         return alternatives
+
+class CounterfactualEngine:
+    def simulate(self, world_state, action):
+        future = copy.deepcopy(world_state)
+        future.update(action)
+        return future

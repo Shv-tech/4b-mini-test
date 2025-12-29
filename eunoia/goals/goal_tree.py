@@ -5,6 +5,12 @@ from .goal_node import GoalNode
 class GoalTree:
     def __init__(self, root: GoalNode):
         self.root = root
+        self._id_counter = root.goal_id
+        self.root.tree = self
+
+    def next_id(self) -> int:
+        self._id_counter += 1
+        return self._id_counter
 
     def get_next_goal(self) -> Optional[GoalNode]:
         return self._dfs_select(self.root)

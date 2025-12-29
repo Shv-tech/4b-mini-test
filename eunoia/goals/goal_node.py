@@ -8,6 +8,7 @@ class GoalNode:
         description: str,
         priority: float = 1.0,
         parent: Optional["GoalNode"] = None,
+        tree=None,
     ):
         self.goal_id = goal_id
         self.description = description
@@ -15,9 +16,14 @@ class GoalNode:
         self.parent = parent
         self.children: List["GoalNode"] = []
         self.status = "PENDING"  # PENDING | SATISFIED | ABANDONED
+        self.tree = tree
+
+        if parent:
+            parent.add_child(self)
 
     def add_child(self, child: "GoalNode"):
         child.parent = self
+        child.tree = self.tree
         self.children.append(child)
 
     def mark_satisfied(self):

@@ -4,29 +4,39 @@ from eunoia.goals.shared_state import GLOBAL_MUTATION_SCORE_STORE
 
 class GoalMutationEngine:
     """
-    Generates mutated child goals.
-    Uses global mutation learning to bias strategy choice.
+    Generates sub-goals when a goal fails repeatedly.
     """
 
-    BASE_MUTATIONS = [
-        "Define",
-        "Explain components of",
-        "Describe the process of",
-    ]
+    def __init__(self):
+        self.score_store = GLOBAL_MUTATION_SCORE_STORE
+        self.exploration_bias = 1.0
+        self.max_children = 3
+
+    def increase_exploration(self):
+        self.exploration_bias = min(self.exploration_bias + 0.2, 2.0)
+
+    def decrease_exploration(self):
+        self.exploration_bias = max(self.exploration_bias - 0.1, 0.5)
 
     def mutate(self, goal: GoalNode):
-        base_text = goal.description.lower()
+        strategies = self.score_store.best_strategies()
 
-        # 🔥 Rank strategies by learned success
-        ranked = GLOBAL_MUTATION_SCORE_STORE.ranked(self.BASE_MUTATIONS)
+        if not strategies:
+            strategies = [
+                "Define " + goal.description,
+                "Explain components of " + goal.description,
+                "Give an example of " + goal.description,
+            ]
 
-        for strategy in ranked:
-            desc = f"{strategy} {base_text}"
+        limit = int(self.max_children * self.exploration_bias)
+        limit = max(1, min(limit, 5))
+
+        for strategy in strategies[:limit]:
             child = GoalNode(
-                goal_id=goal.goal_id * 10 + len(goal.children) + 1,
-                description=desc,
+                goal_id=goal.tree.next_id(),
+                description=strategy,
                 priority=min(goal.priority + 0.2, 1.0),
                 parent=goal,
+                tree=goal.tree,
             )
-            child._mutation_strategy = strategy.lower()
-            goal.add_child(child)
+            child._mutation_strategy = strategy

@@ -2,14 +2,10 @@ from dataclasses import dataclass
 from typing import Dict, List
 import re
 
-
 STOPWORDS = {"explain", "describe", "what", "is", "of", "the", "a", "an"}
 
 
 def extract_concept(goal_text: str) -> str:
-    """
-    Extract the main concept noun from a goal.
-    """
     text = goal_text.lower()
     text = re.sub(r"[^a-z\s]", "", text)
     tokens = [t for t in text.split() if t not in STOPWORDS]
@@ -25,10 +21,6 @@ class StrategyPattern:
 
 
 class StrategyMemory:
-    """
-    Level 7.4: Cross-goal abstraction reuse
-    """
-
     def __init__(self):
         self.strategies: Dict[str, StrategyPattern] = {}
 
@@ -36,19 +28,17 @@ class StrategyMemory:
         parent = parent_goal.lower()
 
         if "explain" in parent:
-            trigger = "explain"
             name = "EXPLAIN_CONCEPT"
+            trigger = "explain"
         else:
             return
 
-        parent_concept = extract_concept(parent_goal)
-        templates = []
-
-        for child in child_goals:
-            child_lower = child.lower()
-            if parent_concept in child_lower:
-                template = child_lower.replace(parent_concept, "{X}")
-                templates.append(template)
+        concept = extract_concept(parent_goal)
+        templates = [
+            child.lower().replace(concept, "{X}")
+            for child in child_goals
+            if concept in child.lower()
+        ]
 
         if not templates:
             return
