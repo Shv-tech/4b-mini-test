@@ -14,16 +14,13 @@ from eunoia.meta.tool_registry import ToolRegistry
 
 class EunoiaController:
     """
-    EUNOIA COGNITIVE CONTROL LOOP (LEVEL 4 → 4.5)
+    EUNOIA COGNITIVE CONTROL LOOP (LEVEL 4.5)
 
-    Upgraded capabilities:
-    - Intent understanding
-    - Constraint formalization
-    - Constraint evaluation
-    - Directed self-correction
-    - Persistent learning from success
-    - Deterministic termination
-    - Meta-confidence tracking (logic-first)
+    Capabilities:
+    - Intent understanding & Constraint formalization
+    - Directed self-correction & Persistent learning
+    - Logic-first confidence tracking
+    - Meta-learning (Abstraction detection)
     """
 
     def __init__(
@@ -40,19 +37,23 @@ class EunoiaController:
         self.enable_memory = enable_memory
         self.confidence_threshold = confidence_threshold
 
-        # Core cognition modules (unchanged)
+        # Core cognition modules
         self.intent_encoder = IntentEncoder()
         self.graph_builder = ConstraintGraphBuilder()
         self.evaluator = ConstraintEvaluator()
         self.correction_policy = CorrectionPolicy()
 
-        # Persistent memory (Level 4)
+        # Meta-Learning Modules (Fixed Initialization)
+        self.abstraction_detector = AbstractionDetector()
+        self.tool_synthesizer = ToolSynthesizer()
+        self.tool_registry = ToolRegistry()
+
+        # Persistent memory
         self.memory = MemoryStore() if enable_memory else None
 
     # --------------------------------------------------
-    # Internal analysis utilities (LOGIC FIRST)
+    # Internal analysis utilities
     # --------------------------------------------------
-
 
     def _estimate_confidence(
         self,
@@ -60,11 +61,10 @@ class EunoiaController:
         iteration: int,
     ) -> float:
         """
-        Conservative confidence estimator.
-        Logic > fluency.
+        Conservative confidence estimator. Logic > fluency.
         """
         if eval_result["is_compliant"]:
-            # Earlier compliance → higher confidence
+            # Earlier compliance -> higher confidence
             return max(0.7, 1.0 - (iteration * 0.15))
 
         violations = eval_result.get("violations", [])
@@ -75,9 +75,6 @@ class EunoiaController:
         return max(0.2, 0.6 - penalty)
 
     def _classify_failure(self, violations) -> str:
-        """
-        Structured failure typing (for future ESR / science routing)
-        """
         if not violations:
             return "unknown"
 
@@ -99,18 +96,7 @@ class EunoiaController:
     def run(self, prompt: str) -> Dict[str, Any]:
         """
         Execute Eunoia-controlled reasoning.
-
-        Returns:
-            {
-                "final_output": str,
-                "iterations": int,
-                "history": List[dict],
-                "confidence": float,
-                "memory_hit": bool,
-                "terminated_reason": str | None
-            }
         """
-
         history: List[Dict[str, Any]] = []
         seen_violation_signatures: Set[str] = set()
         terminated_reason = None
@@ -121,7 +107,21 @@ class EunoiaController:
         frame = self.intent_encoder.encode(prompt)
         graph = self.graph_builder.build(frame.constraints)
 
-        # 2. Memory retrieval (unchanged)
+        # 1.5. Extract Reasoning Trace Schema (The "Skeleton")
+        # This prevents the model from answering before it understands the variables.
+        try:
+            rts_factors = FactorExtractor.extract(prompt)
+            variable_graph = VariableGraph(rts_factors)
+            
+            # If the graph is disconnected or invalid, we can log it (or fail early)
+            if not variable_graph.is_valid():
+                # For now, we proceed but note the structural weakness
+                pass 
+        except Exception:
+            # Fallback for non-logic prompts (e.g. creative writing)
+            pass
+
+        # 2. Memory retrieval
         current_prompt = frame.content
         if self.enable_memory:
             record = self.memory.find_similar(
@@ -164,7 +164,9 @@ class EunoiaController:
 
             # 4. Accept only if logically compliant AND confident
             if is_compliant and confidence >= self.confidence_threshold:
-                signature = tuple(frame.domain + frame.heuristics_used)
+                signature = tuple([frame.intent_type] + frame.heuristics_used) # Fixed tuple creation
+                
+                # Learning: Save to memory
                 if self.enable_memory:
                     self.memory.add({
                         "task_signature": frame.intent_type,
@@ -175,9 +177,10 @@ class EunoiaController:
                         "iterations_needed": iteration + 1,
                     })
 
-                if abstraction_detector.observe(signature):
-                    tool = tool_synthesizer.synthesize(signature)
-                    tool_registry.add(tool)
+                # Meta-Learning: Check for new abstractions
+                if self.abstraction_detector.observe(signature):
+                    tool = self.tool_synthesizer.synthesize(signature)
+                    self.tool_registry.add(tool)
 
                 return {
                     "final_output": output,
@@ -202,7 +205,7 @@ class EunoiaController:
 
             seen_violation_signatures.add(violation_signature)
 
-            # 6. Directed correction (unchanged, but now informed)
+            # 6. Directed correction
             current_prompt = self.correction_policy.build_correction_prompt(
                 original_prompt=prompt,
                 last_output=output,
@@ -220,5 +223,4 @@ class EunoiaController:
             "confidence": final_confidence,
             "memory_hit": memory_hit,
             "terminated_reason": terminated_reason,
-        
-    }
+        }

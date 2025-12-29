@@ -1,11 +1,11 @@
-from eunoia.lhr.solvers import (
+# Fixed imports to match the folder structure (lmr)
+from eunoia.lmr.solvers import (
     AlgebraicSolver,
     NumericSolver,
     LinguisticSolver,
 )
-from eunoia.lhr.arbiter import AnswerArbiter, ArbitrationFailure
-from eunoia.lhr.escalation import EscalationController
-
+from eunoia.lmr.arbiter import AnswerArbiter, ArbitrationFailure
+from eunoia.lmr.escalation import EscalationController
 
 class SSCOmega:
     def __init__(self):

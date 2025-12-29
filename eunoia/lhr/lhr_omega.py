@@ -4,17 +4,6 @@ from eunoia.world.world_model_omega import WorldModelOmega
 
 class LHRomega:
     def __init__(self):
-        self.cpu = LogicalCPU()
-
-    def verify(self, rts):
-        state = compile_rts_to_state(rts)
-        self.cpu.execute(state)
-        return True
-
-
-
-class LHRomega:
-    def __init__(self):
         self.world = WorldModelOmega()
         self.cpu = LogicalCPU()
 
