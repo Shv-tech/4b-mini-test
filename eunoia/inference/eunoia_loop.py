@@ -1,5 +1,5 @@
 from typing import Dict, Any, List, Set
-
+from .crsto import CRSTO  # <--- CRSTO MODULE INTEGRATION
 from eunoia.core.intent_encoder import IntentEncoder
 from eunoia.core.constraint_parser import ConstraintGraphBuilder
 from eunoia.core.constraint_evaluator import ConstraintEvaluator
@@ -18,15 +18,16 @@ from eunoia.tools.python_sandbox import PythonSandbox
 class EunoiaController:
     """
     EUNOIA COGNITIVE CONTROL LOOP (LEVEL 5: OMEGA)
+    Updated with CRSTO (Compute-Risk-Sparsity Tradeoff Objective) for dynamic efficiency.
     """
 
     def __init__(
         self,
         model: BaseModel,
-        max_iters: int = 12,  # <--- CHANGED: Increased from 5 to 12 (The "Deep Thought" Fix)
+        max_iters: int = 12,
         stop_on_repeat: bool = True,
         enable_memory: bool = True,
-        confidence_threshold: float = 0.65,
+        confidence_threshold=0.85,
     ):
         self.model = model
         self.max_iters = max_iters
@@ -48,6 +49,12 @@ class EunoiaController:
         self.sandbox = PythonSandbox()  # Initialize Sandbox
 
         self.memory = MemoryStore() if enable_memory else None
+        
+        # --- RESEARCH MODULE: CRSTO ---
+        # Implementation of Compute-Risk-Sparsity Tradeoff Objective [Verma, 2025]
+        # This module calculates the "Cost of Thinking" vs "Utility of Answer"
+        # to enable dynamic halting (Efficiency Boost).
+        self.crsto = CRSTO(kappa=0.02, beta=1.5) 
 
     def _estimate_confidence(self, eval_result: Dict[str, Any], iteration: int, logic_verified: bool = False) -> float:
         """
@@ -70,6 +77,18 @@ class EunoiaController:
         if any("steps" in s or "count" in s for s in sigs): return "procedural_logic"
         if any("unit" in s or "format" in s for s in sigs): return "representation_error"
         return "general_logic_failure"
+
+    def _finalize(self, output, iteration, history, confidence, reason):
+        """
+        Helper to construct the final return object.
+        """
+        return {
+            "final_output": output,
+            "iterations": iteration + 1,
+            "history": history,
+            "confidence": confidence,
+            "terminated_reason": reason
+        }
 
     def run(self, prompt: str) -> Dict[str, Any]:
         history = []
@@ -156,33 +175,48 @@ class EunoiaController:
 
             final_confidence = confidence
 
-            # 5. Acceptance Gate
-            if is_compliant and (is_logically_sound or confidence >= self.confidence_threshold):
-                
+            # --- CRSTO OBJECTIVE EVALUATION [Verma, 2025] ---
+            # Calculate the trade-off score for this step using the CRSTO formula.
+            # Score = (s * U) / (1 + kappa * C_attn + beta * Risk)
+            crsto_score = self.crsto.calculate_score(
+                confidence=confidence, 
+                iteration=iteration + 1, 
+                token_count=len(output)
+            )
+            
+            # Log CRSTO metrics for debugging/benchmark analysis
+            print(f"   📊 CRSTO Score: {crsto_score:.4f} (Conf={confidence:.2f}, Cost={(iteration+1)**2})")
+
+            # --- DECISION GATES ---
+            
+            # GATE 1: Verification Bypass (The Gold Standard)
+            # If logic is verified by LHR, we stop immediately regardless of iteration count.
+            if is_compliant and is_logically_sound:
                 if self.enable_memory:
-                     self.memory.add({
-                        "task_signature": frame.intent_type,
-                        "intent": frame.intent_type,
-                        "constraints": frame.constraints,
-                        "successful_prompt": current_prompt,
-                        "successful_output": output,
-                        "iterations_needed": iteration + 1,
-                    })
-                
-                signature = tuple([frame.intent_type] + frame.heuristics_used)
-                if self.abstraction_detector.observe(signature):
-                    tool = self.tool_synthesizer.synthesize(signature)
-                    self.tool_registry.add(tool)
+                     self._save_to_memory(frame, current_prompt, output, iteration)
+                return self._finalize(output, iteration, history, confidence, "logic_verified")
 
-                return {
-                    "final_output": output,
-                    "iterations": iteration + 1,
-                    "history": history,
-                    "confidence": confidence,
-                    "terminated_reason": None,
-                }
+            # GATE 2: CRSTO High-Value Halt (Efficiency Trigger)
+            # If the CRSTO score is high (> 0.6), it means we have high utility relative to cost.
+            # This allows early exit for easy problems without wasting compute.
+            if is_compliant and crsto_score > 0.6:
+                if self.enable_memory:
+                     self._save_to_memory(frame, current_prompt, output, iteration)
+                return self._finalize(output, iteration, history, confidence, "crsto_high_value")
 
-            # 6. Correction Policy
+            # GATE 3: CRSTO Diminishing Returns (The "Stop Wasting Time" Trigger)
+            # If we are deep in the loop (iter > 4) and the score is tiny, the marginal utility
+            # of thinking more is outweighed by the n^2 compute cost. Stop now.
+            if iteration > 4 and crsto_score < 0.05:
+                return self._finalize(output, iteration, history, confidence, "crsto_diminishing_returns")
+
+            # GATE 4: Standard Confidence Threshold (Fallback)
+            if is_compliant and confidence >= self.confidence_threshold:
+                 if self.enable_memory:
+                     self._save_to_memory(frame, current_prompt, output, iteration)
+                 return self._finalize(output, iteration, history, confidence, "confidence_threshold")
+
+            # 6. Correction Policy (If we didn't stop)
             violation_signature = "|".join(sorted(v.signature for v in eval_result["violations"]))
             if self.stop_on_repeat and violation_signature in seen_violation_signatures:
                 terminated_reason = "repeated_violation_pattern"
@@ -198,10 +232,22 @@ class EunoiaController:
         if terminated_reason is None:
             terminated_reason = "max_iterations_reached"
 
-        return {
-            "final_output": last_output,
-            "iterations": len(history),
-            "history": history,
-            "confidence": final_confidence,
-            "terminated_reason": terminated_reason,
-        }
+        return self._finalize(last_output, len(history), history, final_confidence, terminated_reason)
+
+    def _save_to_memory(self, frame, current_prompt, output, iteration):
+        """
+        Helper to save successful traces to memory for future abstraction.
+        """
+        self.memory.add({
+            "task_signature": frame.intent_type,
+            "intent": frame.intent_type,
+            "constraints": frame.constraints,
+            "successful_prompt": current_prompt,
+            "successful_output": output,
+            "iterations_needed": iteration + 1,
+        })
+        
+        signature = tuple([frame.intent_type] + frame.heuristics_used)
+        if self.abstraction_detector.observe(signature):
+            tool = self.tool_synthesizer.synthesize(signature)
+            self.tool_registry.add(tool)
