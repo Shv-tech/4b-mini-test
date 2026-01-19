@@ -1,3 +1,5 @@
+from eunoia.world.world_state import WorldState
+
 class Invariant:
     name: str
 

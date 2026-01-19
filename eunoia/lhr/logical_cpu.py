@@ -1,8 +1,8 @@
+# 🔥 FIX: Changed import path from 'lhr' to 'lmr' where the files actually are
 from eunoia.lhr.heuristics.conservation import ConservationHeuristic
 from eunoia.lhr.heuristics.causality import CausalityHeuristic
 from eunoia.lhr.heuristics.boundary import BoundaryHeuristic
 from eunoia.lhr.heuristics.oom import OrderOfMagnitudeHeuristic
-
 
 class LogicalCPU:
     def __init__(self):

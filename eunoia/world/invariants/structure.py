@@ -1,3 +1,5 @@
+from eunoia.world.invariants.base import Invariant
+
 class StructuralIntegrityInvariant(Invariant):
     name = "structural_integrity"
 

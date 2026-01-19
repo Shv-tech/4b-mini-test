@@ -1,4 +1,6 @@
 # eunoia/inference/answer_verifier.py
+from eunoia.inference.final_answer import FinalAnswerExtractor
+
 class AnswerVerifier:
     def verify(self, question: str, proposed: str, solver) -> bool:
         """
